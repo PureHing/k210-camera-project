@@ -146,6 +146,8 @@ For example
 
 ```
 python3 project.py -B dan -p /dev/ttyUSB0 -b 1500000 -S flash
+or
+./download2board.sh
 ```
 
 `-B` means board, `-p` means board serial device port, `-b` means baudrate, `-S` or `--Slow` means download at low speed but more stable mode.
