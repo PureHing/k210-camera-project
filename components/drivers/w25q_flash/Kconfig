@@ -1,0 +1,7 @@
+
+menu "FLASH configuration"
+
+    config ENABLE_FLASH
+        bool "enable flash"
+        default y
+endmenu

@@ -1,0 +1,60 @@
+
+menu "LCD configuration"
+
+    config ENABLE_LCD
+        bool "enable lcd"
+        default y
+
+    menu "Lcd ( Display ) configuration"
+        depends on ENABLE_LCD
+
+        config LCD_WIDTH
+            depends on ENABLE_LCD
+            int "Lcd display size width"
+            default 320
+        config LCD_HEIGHT
+            depends on ENABLE_LCD
+            int "Lcd display size height"
+            default 240
+
+        config LCD_CLK_FREQ_MHZ
+            depends on ENABLE_LCD
+            int "lcd clk frequency MHZ"
+            default 20
+    endmenu
+
+    menu "LCD Pin configuration"
+        depends on ENABLE_LCD
+
+        config PIN_NUM_LCD_RST
+            int "LCD Pin RST"
+            default 37
+        config PIN_NUM_LCD_DCX
+            int "LCD Pin DCX"
+            default 38
+        config PIN_NUM_LCD_WRX
+            int "LCD Pin WRX"
+            default 36
+        config PIN_NUM_LCD_SCK
+            int "LCD Pin SCK"
+            default 39
+        config SPI_CHANNEL
+            int "spi channel"
+            default 0
+        config SPI_SLAVE_SELECT
+            int "spi slave select"
+            default 3
+    endmenu
+
+    menu "LCD Pin Func configuration"
+        depends on ENABLE_LCD
+
+        config GPIOHS_NUM_LCD_DCX
+            int "LCD Pin DCX bind with GPIOHS num"
+            default 2
+        config GPIOHS_NUM_LCD_RST
+            int "LCD Pin RST bind with GPIOHS num"
+            default 3
+    endmenu
+
+endmenu

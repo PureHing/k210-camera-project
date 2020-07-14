@@ -1,0 +1,1 @@
+python project.py -B dan -p /dev/ttyUSB1 -b 2000000 -t -S flash

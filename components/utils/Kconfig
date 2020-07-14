@@ -1,0 +1,14 @@
+
+menu "utils config"
+
+    config ENABLE_JPEG_DECODE
+        bool "enable jpeg decode"
+        default n
+        select ENABLE_SD_CARD
+
+    config ENABLE_JPEG_ENCODE
+        bool "enable jpeg encode"
+        default n
+        select ENABLE_SD_CARD
+endmenu
+

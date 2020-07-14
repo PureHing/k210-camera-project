@@ -1,0 +1,25 @@
+
+menu "SPI TF card configuration"
+
+    config ENABLE_SD_CARD
+        bool "Enable SPI TF card"
+        default n
+
+    menu "SPI TF card configuration"
+        depends on ENABLE_SD_CARD
+
+        config PIN_NUM_SD_CARD_SCLK
+            int "SPI TF card SCLK pin number"
+            default 27
+        config PIN_NUM_SD_CARD_MOSI
+            int "SPI TF card MOSI pin number"
+            default 28
+        config PIN_NUM_SD_CARD_MISO
+            int "SPI TF card MISO pin number"
+            default 26
+        config PIN_NUM_SD_CARD_CS
+            int "SPI TF card CS pin number"
+            default 29
+    endmenu
+
+endmenu

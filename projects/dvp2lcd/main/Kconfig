@@ -1,0 +1,36 @@
+menu "Application configuration"
+
+	menu "Board Type Select"
+
+		choice BBOARD_TYPE
+			bool "board type"
+			default MAIX_DOCK
+				
+		config MAIX_DOCK
+			bool "default DOCK board"
+
+		config SELF_DEFINE			
+			bool "client 1 board"
+		endchoice
+		
+	endmenu
+
+			
+	menu "Drivers configuration"
+		# camera
+		osource "${SDK_PATH}/components/drivers/camera/Kconfig"
+	
+		# lcd
+		osource "${SDK_PATH}/components/drivers/lcd/Kconfig"
+	
+		#flash
+		osource "${SDK_PATH}/components/drivers/flash/Kconfig"
+		
+		# sd_card
+		osource "${SDK_PATH}/components/drivers/sd_card/Kconfig"
+	
+	endmenu
+
+
+endmenu
+

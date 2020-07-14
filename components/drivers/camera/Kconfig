@@ -1,0 +1,60 @@
+
+menu "Camera( Sensor ) configuration"
+
+    comment "SELECT CAMERA TYPE"
+
+    config ENABLE_CAMERA
+        bool "enable camera"
+        default y
+
+    choice CAMERA_TYPE
+        depends on ENABLE_CAMERA
+        bool "Camera type"
+        default CAMERA_OV2640
+
+        config CAMERA_OV2640
+            bool "single ov2640"
+        config CAMERA_GC0328
+            bool "single gc0328"
+        config CAMERA_OV5640
+            bool "single ov5640"
+    endchoice
+
+    menu "DVP pin configuration"
+        depends on  ENABLE_CAMERA 
+        config PIN_CMOS_RST
+            int "LCD Pin CMOS_RST"
+            default 42
+        config PIN_CMOS_PWDN
+            int "LCD Pin CMOS_PWDN"
+            default 44
+        config PIN_CMOS_XCLK
+            int "LCD Pin CMOS_XCLK"
+            default 46
+        config PIN_CMOS_VSYNC
+            int "LCD Pin CMOS_VSYNC"
+            default 43
+
+        config PIN_CMOS_HREF
+            int "LCD Pin CMOS_HREF"
+            default 45
+        config PIN_CMOS_PCLK
+            int "LCD Pin CMOS_PCLK"
+            default 47
+        config PIN_SCCB_SCLK
+            int "LCD Pin SCCB_SCLK"
+            default 41
+        config PIN_SCCB_SDA
+            int "LCD Pin SCCB_SDA"
+            default 40
+    endmenu
+
+    config CAMERA_RESOLUTION_WIDTH
+        depends on ENABLE_CAMERA
+        int "Camera resolution width"
+        default 320
+    config CAMERA_RESOLUTION_HEIGHT
+        depends on ENABLE_CAMERA
+        int "Camera resolution height"
+        default 240
+endmenu
