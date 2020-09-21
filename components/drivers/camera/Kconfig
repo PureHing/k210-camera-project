@@ -23,29 +23,29 @@ menu "Camera( Sensor ) configuration"
     menu "DVP pin configuration"
         depends on  ENABLE_CAMERA 
         config PIN_CMOS_RST
-            int "LCD Pin CMOS_RST"
+            int "Pin CMOS_RST"
             default 42
         config PIN_CMOS_PWDN
-            int "LCD Pin CMOS_PWDN"
+            int "Pin CMOS_PWDN"
             default 44
         config PIN_CMOS_XCLK
-            int "LCD Pin CMOS_XCLK"
+            int "Pin CMOS_XCLK"
             default 46
         config PIN_CMOS_VSYNC
-            int "LCD Pin CMOS_VSYNC"
+            int "Pin CMOS_VSYNC"
             default 43
 
         config PIN_CMOS_HREF
-            int "LCD Pin CMOS_HREF"
+            int "Pin CMOS_HREF"
             default 45
         config PIN_CMOS_PCLK
-            int "LCD Pin CMOS_PCLK"
+            int "Pin CMOS_PCLK"
             default 47
         config PIN_SCCB_SCLK
-            int "LCD Pin SCCB_SCLK"
+            int "Pin SCCB_SCLK"
             default 41
         config PIN_SCCB_SDA
-            int "LCD Pin SCCB_SDA"
+            int "Pin SCCB_SDA"
             default 40
     endmenu
 

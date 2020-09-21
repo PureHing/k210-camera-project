@@ -1,0 +1,10 @@
+{
+    "baudrate": 2000000, 
+    "Slow": true, 
+    "sram": false, 
+    "terminal": true, 
+    "noansi": false, 
+    "erase": false, 
+    "Board": "dan", 
+    "port": "/dev/ttyUSB0"
+}

@@ -56,7 +56,6 @@ menu "Application configuration"
 			int "JPEG image size(KB) buffer"
 			default 30
 		config JPEG_COMPRESS_QUALITY
-			depends on IMAGE_SUFFIX="jpg"
 			int "JPEG compress quality"
 			default 90	
 	endmenu

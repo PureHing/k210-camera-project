@@ -100,14 +100,17 @@ int main(void)
 
 
     plic_init();
-    rtc_init();
-
+    rtc_init(); 
+    /* DVP init */
+    LOGI(TAG, "DVP init");
+    camera_init();
 #if CONFIG_ENABLE_LCD
     /* LCD init */
     LOGI(TAG, "LCD init");
     lcd_init();
 #if CONFIG_MAIX_DOCK
     lcd_set_direction(DIR_YX_RLDU);
+
 #else
     lcd_set_direction(DIR_YX_RLUD);
 #endif
@@ -116,9 +119,8 @@ int main(void)
 #endif
     g_lcd_gram0 = (uint32_t *)iomem_malloc(320 * 240 * 2);
     g_lcd_gram1 = (uint32_t *)iomem_malloc(320 * 240 * 2);
-    /* DVP init */
-    LOGI(TAG, "DVP init");
-    camera_init();
+
+
     dvp_set_ai_addr((uint32_t)0x40600000, (uint32_t)0x40612C00, (uint32_t)0x40625800);
     dvp_set_display_addr((uint32_t)g_lcd_gram0);
     dvp_config_interrupt(DVP_CFG_START_INT_ENABLE | DVP_CFG_FINISH_INT_ENABLE, 0);
@@ -143,12 +145,22 @@ int main(void)
     uint64_t time_now = sysctl_get_time_us();
     char buf[10];
     rtc_timer_set(2020, 7, 14, 14, 00, 50);
+
     while (1)
     {
         /* ai cal finish*/
         while (g_dvp_finish_flag == 0)
             ;
         g_dvp_finish_flag = 0;
+        // uint8_t* d=g_ram_mux?(uint16_t*)g_lcd_gram0:(uint16_t*)g_lcd_gram1;
+        // for(int i=0;i<240;i++)
+        // {
+        //     for(int j=0;j<320;j++)
+        //     {
+        //         printf("%d ",d[i*320+j]);
+        //     }
+        //     printf("\n");
+        // }
 #if CONFIG_ENABLE_LCD
         /* display pic*/
         g_ram_mux ^= 0x01;
@@ -162,6 +174,7 @@ int main(void)
         get_date_time(); //update time
         lcd_ram_draw_string(buf, time_ram, BLACK, WHITE);
         lcd_draw_picture(0, 0, strlen(buf) * 8, 16, time_ram);
+        printf("enable lcd\n");
 #endif
     }
     iomem_free(g_lcd_gram0);

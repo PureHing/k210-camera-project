@@ -82,7 +82,9 @@ int main(void)
 
     plic_init();
 
-
+    /* DVP init */
+    LOGI(TAG, "DVP init");
+    camera_init();
 #if CONFIG_ENABLE_SD_CARD
     /* SD card init */
     if (sdcard_init())
@@ -156,9 +158,7 @@ int main(void)
     display_image.width = 320;
     display_image.height = 240;
     image_init(&display_image);
-    /* DVP init */
-    LOGI(TAG, "DVP init");
-    camera_init();
+
     dvp_set_ai_addr((uint32_t)kpu_image.addr, (uint32_t)(kpu_image.addr + 320 * 240),
                     (uint32_t)(kpu_image.addr + 320 * 240 * 2));
     dvp_set_display_addr((uint32_t)display_image.addr);
@@ -204,6 +204,7 @@ int main(void)
             lcd_draw_picture(0, 20, strlen(filename) * 8, 16, time_ram);
             g_save_flag = 0;
         }
+        
         if(g_save_flag && strcmp(CONFIG_IMAGE_SUFFIX, "jpg") == 0)
         {
             sprintf(filename, "0:SaveImage/%d.jpg", frame++);

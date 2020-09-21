@@ -64,7 +64,7 @@ void camera_init()
 
 #if CONFIG_CAMERA_OV5640
     dvp_init(16);
-    dvp_set_xclk_rate(12000000);
+    dvp_set_xclk_rate(24000000);
     dvp_enable_burst();
     dvp_set_output_enable(0, 1);
     dvp_set_output_enable(1, 1);
@@ -95,7 +95,7 @@ void camera_init()
     ov2640_init();
 #elif CONFIG_CAMERA_GC0328
     dvp_init(8);
-    dvp_set_xclk_rate(12000000);
+    dvp_set_xclk_rate(24000000);
     dvp_enable_burst();
     dvp_set_output_enable(0, 1);
     dvp_set_output_enable(1, 1);
