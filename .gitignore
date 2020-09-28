@@ -60,4 +60,4 @@ build
 # python
 *.pyc
 __pycache__
-
+projects/espwifi/*
